@@ -3,8 +3,7 @@
 namespace RayRutjes\Domain\Stub\AggregateRoot;
 
 use RayRutjes\Domain\AggregateRoot\AbstractAggregateRoot;
-use RayRutjes\Domain\Entity\Identifier;
-use RayRutjes\Domain\ValueObject\Identity\Uuid;
+use RayRutjes\Domain\Stub\Identifier\IdentifierStub;
 
 class AggregateRootStub extends AbstractAggregateRoot
 {
@@ -13,6 +12,6 @@ class AggregateRootStub extends AbstractAggregateRoot
      */
     public function id()
     {
-        return Uuid::generate();
+        return IdentifierStub::generate();
     }
 }

@@ -4,7 +4,8 @@ namespace RayRutjes\Domain\Stub\Entity;
 
 use RayRutjes\Domain\Entity\AbstractEntity;
 use RayRutjes\Domain\Entity\Identifier;
-use RayRutjes\Domain\ValueObject\Identity\Uuid;
+use RayRutjes\Domain\Stub\Identifier\IdentifierStub;
+use Rhumsaa\Uuid\Uuid;
 
 class EntityStub extends AbstractEntity
 {
@@ -13,6 +14,6 @@ class EntityStub extends AbstractEntity
      */
     public function id()
     {
-        return Uuid::fromNativeString(\Rhumsaa\Uuid\Uuid::NIL);
+        return IdentifierStub::fromNativeString(Uuid::NIL);
     }
 }

@@ -3,11 +3,10 @@
 namespace RayRutjes\Domain\ValueObject\Identity;
 
 use DomainException;
-use RayRutjes\Domain\Identifier;
 use RayRutjes\Domain\ValueObject;
 use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class Uuid extends AbstractValueObject implements Identifier
+class Uuid extends AbstractValueObject
 {
     /**
      * @var \Rhumsaa\Uuid\Uuid
@@ -31,7 +30,7 @@ class Uuid extends AbstractValueObject implements Identifier
             throw new DomainException('Invalid Uuid format');
         }
 
-        return new self(\Rhumsaa\Uuid\Uuid::fromString($uuid));
+        return new static(\Rhumsaa\Uuid\Uuid::fromString($uuid));
     }
 
     /**
@@ -39,7 +38,7 @@ class Uuid extends AbstractValueObject implements Identifier
      */
     final public static function generate()
     {
-        return new self(\Rhumsaa\Uuid\Uuid::uuid4());
+        return new static(\Rhumsaa\Uuid\Uuid::uuid4());
     }
 
     /**
