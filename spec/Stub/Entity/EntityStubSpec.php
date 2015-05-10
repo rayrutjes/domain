@@ -5,7 +5,6 @@ namespace spec\RayRutjes\Domain\Stub\Entity;
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\Entity;
 use RayRutjes\Domain\Stub\Identifier\IdentifierStub;
-use RayRutjes\Domain\ValueObject\Identity\Uuid;
 
 class EntityStubSpec extends ObjectBehavior
 {
