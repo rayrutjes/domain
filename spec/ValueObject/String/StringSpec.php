@@ -40,4 +40,15 @@ class StringSpec extends ObjectBehavior
         $this->toNativeString()->shouldReturn('string');
         $this->__toString()->shouldReturn('string');
     }
+
+    public function it_can_tell_if_the_string_is_empty()
+    {
+        $this->beConstructedThrough('fromNativeString', ['']);
+        $this->isEmpty()->shouldReturn(true);
+    }
+
+    public function it_can_tell_if_the_string_is_not_empty()
+    {
+        $this->isEmpty()->shouldReturn(false);
+    }
 }

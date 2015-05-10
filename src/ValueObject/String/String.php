@@ -35,6 +35,14 @@ class String extends AbstractValueObject
     }
 
     /**
+     * @return bool
+     */
+    final public function isEmpty()
+    {
+        return empty($this->toNativeString());
+    }
+
+    /**
      * @param ValueObject $other
      *
      * @return bool
