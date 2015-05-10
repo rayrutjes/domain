@@ -20,7 +20,7 @@ class String extends AbstractValueObject
      */
     final public static function fromNativeString($string)
     {
-        return new self($string);
+        return new static($string);
     }
 
     /**

@@ -17,7 +17,7 @@ class UuidSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('RayRutjes\Domain\ValueObject\Identity\Uuid');
-        $this->shouldHaveType('RayRutjes\Domain\Identifier');
+        $this->shouldHaveType('RayRutjes\Domain\ValueObject');
     }
 
     public function it_can_be_built_from_a_native_string()

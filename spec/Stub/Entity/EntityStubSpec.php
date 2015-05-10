@@ -4,6 +4,7 @@ namespace spec\RayRutjes\Domain\Stub\Entity;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\Entity;
+use RayRutjes\Domain\Stub\Identifier\IdentifierStub;
 use RayRutjes\Domain\ValueObject\Identity\Uuid;
 
 class EntityStubSpec extends ObjectBehavior
@@ -21,11 +22,11 @@ class EntityStubSpec extends ObjectBehavior
 
     public function it_identity_can_be_compared_with_another_entity(Entity $other)
     {
-        $randomUuid = Uuid::generate();
+        $randomUuid = IdentifierStub::generate();
         $other->id()->willReturn($randomUuid);
         $this->sameIdentityAs($other)->shouldReturn(false);
 
-        $nilUuid = Uuid::fromNativeString(\Rhumsaa\Uuid\Uuid::NIL);
+        $nilUuid = IdentifierStub::fromNativeString(\Rhumsaa\Uuid\Uuid::NIL);
         $other->id()->willReturn($nilUuid);
         $this->sameIdentityAs($other)->shouldReturn(true);
     }

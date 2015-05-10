@@ -34,7 +34,7 @@ class EmailAddress extends AbstractValueObject
     {
         $email = String::fromNativeString($email);
 
-        return new self($email);
+        return new static($email);
     }
 
     /**

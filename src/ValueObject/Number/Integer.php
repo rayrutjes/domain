@@ -24,7 +24,7 @@ class Integer extends AbstractValueObject
             throw new AssertionFailedException('Native integer expected.');
         }
 
-        return new self($integer);
+        return new static($integer);
     }
 
     /**
