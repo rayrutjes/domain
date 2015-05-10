@@ -7,5 +7,5 @@ interface DomainEvent
     /**
      * @return string
      */
-    public function getName();
+    public function name();
 }
