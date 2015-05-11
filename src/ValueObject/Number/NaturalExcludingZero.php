@@ -16,7 +16,7 @@ class NaturalExcludingZero extends AbstractValueObject
     /**
      * @param $nativeInteger
      *
-     * @return Natural
+     * @return NaturalExcludingZero
      */
     final public static function fromNativeInteger($nativeInteger)
     {
@@ -28,7 +28,7 @@ class NaturalExcludingZero extends AbstractValueObject
     /**
      * @param Integer $integer
      *
-     * @return Natural
+     * @return NaturalExcludingZero
      */
     final public static function fromInteger(Integer $integer)
     {
@@ -38,7 +38,7 @@ class NaturalExcludingZero extends AbstractValueObject
     /**
      * @param Integer $integer
      */
-    protected function __construct(Integer $integer)
+    final protected function __construct(Integer $integer)
     {
         if ($integer->toNativeInteger() < 1) {
             throw new AssertionFailedException('An integer greater than 0 is expected.');

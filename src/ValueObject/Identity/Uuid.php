@@ -14,15 +14,9 @@ class Uuid extends AbstractValueObject
     private $uuid;
 
     /**
-     * @param \Rhumsaa\Uuid\Uuid $uuid
-     */
-    final public function __construct(\Rhumsaa\Uuid\Uuid $uuid)
-    {
-        $this->uuid = $uuid;
-    }
-
-    /**
      * @param string $uuid
+     *
+     * @return Uuid
      */
     final public static function fromNativeString($uuid)
     {
@@ -39,6 +33,14 @@ class Uuid extends AbstractValueObject
     final public static function generate()
     {
         return new static(\Rhumsaa\Uuid\Uuid::uuid4());
+    }
+
+    /**
+     * @param \Rhumsaa\Uuid\Uuid $uuid
+     */
+    final public function __construct(\Rhumsaa\Uuid\Uuid $uuid)
+    {
+        $this->uuid = $uuid;
     }
 
     /**

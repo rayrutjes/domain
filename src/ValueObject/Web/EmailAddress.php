@@ -15,17 +15,6 @@ class EmailAddress extends AbstractValueObject
     private $email;
 
     /**
-     * @param String $email
-     */
-    final public function __construct(String $email)
-    {
-        if (!filter_var($email->toNativeString(), FILTER_VALIDATE_EMAIL)) {
-            throw new AssertionFailedException('Misformatted email address.');
-        }
-        $this->email = $email;
-    }
-
-    /**
      * @param $email
      *
      * @return EmailAddress
@@ -35,6 +24,17 @@ class EmailAddress extends AbstractValueObject
         $email = String::fromNativeString($email);
 
         return new static($email);
+    }
+
+    /**
+     * @param String $email
+     */
+    final public function __construct(String $email)
+    {
+        if (!filter_var($email->toNativeString(), FILTER_VALIDATE_EMAIL)) {
+            throw new AssertionFailedException('Misformatted email address.');
+        }
+        $this->email = $email;
     }
 
     /**

@@ -4,16 +4,16 @@ namespace RayRutjes\Domain\ValueObject\Null;
 
 use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class Null extends AbstractValueObject
+final class Null extends AbstractValueObject
 {
-    final public function __construct()
-    {
-    }
-
+    /**
+     * @return string
+     */
     public function toNativeString()
     {
         return strval(null);
     }
+
     /**
      * @return string
      */
