@@ -49,8 +49,7 @@ class IntegerObject implements ValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        $className = static::class;
-        if (!$other instanceof $className) {
+        if (!$other instanceof self) {
             return false;
         }
 
