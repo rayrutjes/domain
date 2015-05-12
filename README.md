@@ -3,11 +3,11 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/RayRutjes/domain.svg?style=flat-square)](https://scrutinizer-ci.com/g/RayRutjes/domain/code-structure)
 [![Code Climate](https://img.shields.io/codeclimate/github/RayRutjes/domain.svg?style=flat-square)](https://codeclimate.com/github/RayRutjes/domain/code)
+[![Join the chat at https://gitter.im/RayRutjes/domain](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RayRutjes/domain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 What is this package?
 ---------------------
 
-[![Join the chat at https://gitter.im/RayRutjes/domain](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RayRutjes/domain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This package aims to provide you with a bunch of interfaces, abstract classes and concrete value objects which will speed up
 your project's domain design.
 
