@@ -4,6 +4,7 @@ namespace spec\RayRutjes\Domain\ValueObject\String;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
+use RayRutjes\Domain\ValueObject;
 use RayRutjes\Domain\ValueObject\String\StringObject;
 
 class StringObjectSpec extends ObjectBehavior
@@ -26,13 +27,15 @@ class StringObjectSpec extends ObjectBehavior
         $this->shouldThrow(new AssertionFailedException('Native string expected.'))->during('fromNativeString', [null]);
     }
 
-    public function it_can_be_compared_with_another_string()
+    public function it_can_be_compared_with_another_string(ValueObject $valueObject)
     {
         $same = StringObject::fromNativeString('string');
         $this->sameValueAs($same)->shouldReturn(true);
 
         $other = StringObject::fromNativeString('other');
         $this->sameValueAs($other)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_string()

@@ -4,6 +4,7 @@ namespace spec\RayRutjes\Domain\ValueObject\Web;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
+use RayRutjes\Domain\ValueObject;
 use RayRutjes\Domain\ValueObject\String\StringObject;
 use RayRutjes\Domain\ValueObject\Web\EmailAddress;
 
@@ -27,13 +28,15 @@ class EmailAddressSpec extends ObjectBehavior
         $this->shouldThrow(new AssertionFailedException('Misformatted email address.'))->during('__construct', [$email]);
     }
 
-    public function it_can_be_compared_with_another_email_address()
+    public function it_can_be_compared_with_another_email_address(ValueObject $valueObject)
     {
         $same = EmailAddress::fromNativeString('g.mansoif@example.com');
         $this->sameValueAs($same)->shouldReturn(true);
 
         $other = EmailAddress::fromNativeString('other@example.com');
         $this->sameValueAs($other)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_string()

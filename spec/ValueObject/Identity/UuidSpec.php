@@ -4,6 +4,7 @@ namespace spec\RayRutjes\Domain\ValueObject\Identity;
 
 use DomainException;
 use PhpSpec\ObjectBehavior;
+use RayRutjes\Domain\ValueObject;
 use Rhumsaa\Uuid\Uuid;
 
 class UuidSpec extends ObjectBehavior
@@ -34,13 +35,15 @@ class UuidSpec extends ObjectBehavior
 
         // Todo: find a way of test for uniqueness, found no way yet to achieve it with phpspec, as it is not possible to re-instantiate itself
     }
-    public function it_can_be_compared_with_another_uuid()
+    public function it_can_be_compared_with_another_uuid(ValueObject $valueObject)
     {
         $nilUuid = \RayRutjes\Domain\ValueObject\Identity\Uuid::fromNativeString(Uuid::NIL);
         $this->sameValueAs($nilUuid)->shouldReturn(true);
 
         $randomUuid = \RayRutjes\Domain\ValueObject\Identity\Uuid::generate();
         $this->sameValueAs($randomUuid)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_string()

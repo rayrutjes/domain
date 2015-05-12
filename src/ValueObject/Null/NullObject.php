@@ -17,7 +17,7 @@ final class NullObject implements ValueObject
      */
     public function sameValueAs(ValueObject $other)
     {
-        return $other instanceof NullObject;
+        return $other instanceof self;
     }
 
     /**
@@ -35,5 +35,4 @@ final class NullObject implements ValueObject
     {
         return $this->toNativeString();
     }
-
 }

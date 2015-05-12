@@ -5,8 +5,6 @@ namespace spec\RayRutjes\Domain\ValueObject\Null;
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\ValueObject;
 use RayRutjes\Domain\ValueObject\Null\NullObject;
-use RayRutjes\Domain\ValueObject\String\StringObject;
-use stdClass;
 
 class NullObjectSpec extends ObjectBehavior
 {

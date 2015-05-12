@@ -53,6 +53,7 @@ class IntegerObject implements ValueObject
         if (!$other instanceof $className) {
             return false;
         }
+
         return $this->toNativeString() === $other->toNativeString();
     }
 

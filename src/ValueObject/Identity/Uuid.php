@@ -53,6 +53,7 @@ class Uuid implements ValueObject
         if (!$other instanceof $className) {
             return false;
         }
+
         return $this->uuid->equals($other->uuid);
     }
 

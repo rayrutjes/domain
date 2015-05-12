@@ -4,6 +4,7 @@ namespace spec\RayRutjes\Domain\ValueObject\Number;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
+use RayRutjes\Domain\ValueObject;
 use RayRutjes\Domain\ValueObject\Number\IntegerObject;
 use RayRutjes\Domain\ValueObject\Number\NaturalIncludingZero;
 
@@ -40,13 +41,15 @@ class NaturalIncludingZeroSpec extends ObjectBehavior
         $this->shouldThrow(new AssertionFailedException('An integer greater or equal to 0 is expected.'))->during('fromNativeInteger', [-5]);
     }
 
-    public function it_can_be_compared_with_another_natural_including_zero()
+    public function it_can_be_compared_with_another_natural_including_zero(ValueObject $valueObject)
     {
         $same = NaturalIncludingZero::fromNativeInteger(10);
         $this->sameValueAs($same)->shouldReturn(true);
 
         $other = NaturalIncludingZero::fromNativeInteger(20);
         $this->sameValueAs($other)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_integer()

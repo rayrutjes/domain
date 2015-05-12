@@ -27,6 +27,7 @@ class EmailAddress implements ValueObject
 
     /**
      * @param StringObject $string
+     *
      * @return EmailAddress
      */
     final public static function fromString(StringObject $string)
@@ -64,6 +65,7 @@ class EmailAddress implements ValueObject
         if (!$other instanceof $className) {
             return false;
         }
+
         return $this->toNativeString() === $other->toNativeString();
     }
 
