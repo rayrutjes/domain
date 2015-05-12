@@ -4,14 +4,15 @@ namespace spec\RayRutjes\Domain\ValueObject\Web;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
-use RayRutjes\Domain\ValueObject\String\String;
+use RayRutjes\Domain\ValueObject;
+use RayRutjes\Domain\ValueObject\String\StringObject;
 use RayRutjes\Domain\ValueObject\Web\EmailAddress;
 
 class EmailAddressSpec extends ObjectBehavior
 {
     public function let()
     {
-        $email = String::fromNativeString('g.mansoif@example.com');
+        $email = StringObject::fromNativeString('g.mansoif@example.com');
         $this->beConstructedWith($email);
     }
 
@@ -23,17 +24,19 @@ class EmailAddressSpec extends ObjectBehavior
 
     public function it_should_not_accept_misformatted_email_addresses()
     {
-        $email = String::fromNativeString('g.mansoif[@]example.com');
+        $email = StringObject::fromNativeString('g.mansoif[@]example.com');
         $this->shouldThrow(new AssertionFailedException('Misformatted email address.'))->during('__construct', [$email]);
     }
 
-    public function it_can_be_compared_with_another_email_address()
+    public function it_can_be_compared_with_another_email_address(ValueObject $valueObject)
     {
         $same = EmailAddress::fromNativeString('g.mansoif@example.com');
         $this->sameValueAs($same)->shouldReturn(true);
 
         $other = EmailAddress::fromNativeString('other@example.com');
         $this->sameValueAs($other)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_string()

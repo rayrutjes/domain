@@ -15,7 +15,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "RayRutjes\\Domain\\\\Stub\\": "stubs/"
+            "RayRutjes\\Domain\\Stub\\": "stubs/"
         }
     },
     "config": {

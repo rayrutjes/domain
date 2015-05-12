@@ -4,37 +4,46 @@ namespace RayRutjes\Domain\ValueObject\Web;
 
 use RayRutjes\Domain\DomainException\AssertionFailedException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
-use RayRutjes\Domain\ValueObject\String\String;
+use RayRutjes\Domain\ValueObject\String\StringObject;
 
-class EmailAddress extends AbstractValueObject
+class EmailAddress implements ValueObject
 {
     /**
-     * @var String
+     * @var StringObject
      */
     private $email;
 
     /**
-     * @param String $email
-     */
-    final public function __construct(String $email)
-    {
-        if (!filter_var($email->toNativeString(), FILTER_VALIDATE_EMAIL)) {
-            throw new AssertionFailedException('Misformatted email address.');
-        }
-        $this->email = $email;
-    }
-
-    /**
-     * @param $email
+     * @param string $nativeString
      *
      * @return EmailAddress
      */
-    final public static function fromNativeString($email)
+    final public static function fromNativeString($nativeString)
     {
-        $email = String::fromNativeString($email);
+        $string = StringObject::fromNativeString($nativeString);
 
-        return new static($email);
+        return self::fromString($string);
+    }
+
+    /**
+     * @param StringObject $string
+     *
+     * @return EmailAddress
+     */
+    final public static function fromString(StringObject $string)
+    {
+        return new static($string);
+    }
+
+    /**
+     * @param StringObject $string
+     */
+    final public function __construct(StringObject $string)
+    {
+        if (!filter_var($string->toNativeString(), FILTER_VALIDATE_EMAIL)) {
+            throw new AssertionFailedException('Misformatted email address.');
+        }
+        $this->email = $string;
     }
 
     /**
@@ -52,8 +61,12 @@ class EmailAddress extends AbstractValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-                && $this->email->sameValueAs($other->email);
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+
+        return $this->toNativeString() === $other->toNativeString();
     }
 
     /**

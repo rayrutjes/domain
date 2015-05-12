@@ -25,11 +25,11 @@ class DomainEventDispatcher
      */
     private function getListenersForEvent(DomainEvent $event)
     {
-        if (!array_key_exists($event->getName(), $this->listeners)) {
+        if (!array_key_exists($event->name(), $this->listeners)) {
             return [];
         }
 
-        return $this->listeners[$event->getName()];
+        return $this->listeners[$event->name()];
     }
 
     /**

@@ -4,9 +4,8 @@ namespace RayRutjes\Domain\ValueObject\String;
 
 use RayRutjes\Domain\DomainException\AssertionFailedException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class String extends AbstractValueObject
+class StringObject implements ValueObject
 {
     /**
      * @var string
@@ -14,24 +13,32 @@ class String extends AbstractValueObject
     private $string;
 
     /**
-     * @param $string
+     * @param string $nativeString
      *
-     * @return String
+     * @return StringObject
      */
-    final public static function fromNativeString($string)
+    final public static function fromNativeString($nativeString)
     {
-        return new static($string);
+        return new static($nativeString);
     }
 
     /**
-     * @param string $string
+     * @param string $nativeString
      */
-    final private function __construct($string)
+    final private function __construct($nativeString)
     {
-        if (!is_string($string)) {
+        if (!is_string($nativeString)) {
             throw new AssertionFailedException('Native string expected.');
         }
-        $this->string = $string;
+        $this->string = $nativeString;
+    }
+
+    /**
+     * @return bool
+     */
+    final public function isEmpty()
+    {
+        return empty($this->toNativeString());
     }
 
     /**
@@ -41,8 +48,12 @@ class String extends AbstractValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-                && strcmp($this->toNativeString(), $other->toNativeString()) === 0;
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+
+        return $this->toNativeString() === $other->toNativeString();
     }
 
     /**

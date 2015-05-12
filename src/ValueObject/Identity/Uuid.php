@@ -4,9 +4,8 @@ namespace RayRutjes\Domain\ValueObject\Identity;
 
 use DomainException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class Uuid extends AbstractValueObject
+class Uuid implements ValueObject
 {
     /**
      * @var \Rhumsaa\Uuid\Uuid
@@ -14,15 +13,9 @@ class Uuid extends AbstractValueObject
     private $uuid;
 
     /**
-     * @param \Rhumsaa\Uuid\Uuid $uuid
-     */
-    final public function __construct(\Rhumsaa\Uuid\Uuid $uuid)
-    {
-        $this->uuid = $uuid;
-    }
-
-    /**
      * @param string $uuid
+     *
+     * @return Uuid
      */
     final public static function fromNativeString($uuid)
     {
@@ -42,14 +35,26 @@ class Uuid extends AbstractValueObject
     }
 
     /**
+     * @param \Rhumsaa\Uuid\Uuid $uuid
+     */
+    final public function __construct(\Rhumsaa\Uuid\Uuid $uuid)
+    {
+        $this->uuid = $uuid;
+    }
+
+    /**
      * @param ValueObject $other
      *
      * @return bool
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-                && $this->uuid->equals($other->uuid);
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+
+        return $this->uuid->equals($other->uuid);
     }
 
     /**

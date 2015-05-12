@@ -32,8 +32,8 @@ class DomainEventDispatcherSpec extends ObjectBehavior
 
         $aggregateRoot->releaseEvents()->shouldBeCalled()->willReturn([$event1, $event2]);
 
-        $event1->getName()->shouldBeCalled()->willReturn('event1');
-        $event2->getName()->shouldBeCalled()->willReturn('event2');
+        $event1->name()->shouldBeCalled()->willReturn('event1');
+        $event2->name()->shouldBeCalled()->willReturn('event2');
 
         $this->releaseAndDispatchAggregateEvents($aggregateRoot);
     }
@@ -44,7 +44,7 @@ class DomainEventDispatcherSpec extends ObjectBehavior
     ) {
         $aggregateRoot->releaseEvents()->shouldBeCalled()->willReturn([$event1]);
 
-        $event1->getName()->shouldBeCalled()->willReturn('event1');
+        $event1->name()->shouldBeCalled()->willReturn('event1');
 
         $this->releaseAndDispatchAggregateEvents($aggregateRoot);
     }

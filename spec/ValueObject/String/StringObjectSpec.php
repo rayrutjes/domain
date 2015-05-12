@@ -4,9 +4,10 @@ namespace spec\RayRutjes\Domain\ValueObject\String;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
-use RayRutjes\Domain\ValueObject\String\String;
+use RayRutjes\Domain\ValueObject;
+use RayRutjes\Domain\ValueObject\String\StringObject;
 
-class StringSpec extends ObjectBehavior
+class StringObjectSpec extends ObjectBehavior
 {
     public function let()
     {
@@ -15,7 +16,7 @@ class StringSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('RayRutjes\Domain\ValueObject\String\String');
+        $this->shouldHaveType('RayRutjes\Domain\ValueObject\String\StringObject');
         $this->shouldHaveType('RayRutjes\Domain\ValueObject');
     }
 
@@ -26,18 +27,31 @@ class StringSpec extends ObjectBehavior
         $this->shouldThrow(new AssertionFailedException('Native string expected.'))->during('fromNativeString', [null]);
     }
 
-    public function it_can_be_compared_with_another_string()
+    public function it_can_be_compared_with_another_string(ValueObject $valueObject)
     {
-        $same = String::fromNativeString('string');
+        $same = StringObject::fromNativeString('string');
         $this->sameValueAs($same)->shouldReturn(true);
 
-        $other = String::fromNativeString('other');
+        $other = StringObject::fromNativeString('other');
         $this->sameValueAs($other)->shouldReturn(false);
+
+        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
     public function it_can_be_translated_to_a_native_string()
     {
         $this->toNativeString()->shouldReturn('string');
         $this->__toString()->shouldReturn('string');
+    }
+
+    public function it_can_tell_if_the_string_is_empty()
+    {
+        $this->beConstructedThrough('fromNativeString', ['']);
+        $this->isEmpty()->shouldReturn(true);
+    }
+
+    public function it_can_tell_if_the_string_is_not_empty()
+    {
+        $this->isEmpty()->shouldReturn(false);
     }
 }
