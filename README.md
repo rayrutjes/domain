@@ -6,6 +6,8 @@
 
 What is this package?
 ---------------------
+
+[![Join the chat at https://gitter.im/RayRutjes/domain](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RayRutjes/domain?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This package aims to provide you with a bunch of interfaces, abstract classes and concrete value objects which will speed up
 your project's domain design.
 
