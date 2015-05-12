@@ -9,7 +9,7 @@ use RayRutjes\Domain\ValueObject\String\StringObject;
 class EmailAddress implements ValueObject
 {
     /**
-     * @var String
+     * @var StringObject
      */
     private $email;
 
