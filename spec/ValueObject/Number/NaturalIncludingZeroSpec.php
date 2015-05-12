@@ -4,7 +4,7 @@ namespace spec\RayRutjes\Domain\ValueObject\Number;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
-use RayRutjes\Domain\ValueObject\Number\Integer;
+use RayRutjes\Domain\ValueObject\Number\IntegerObject;
 use RayRutjes\Domain\ValueObject\Number\NaturalIncludingZero;
 
 class NaturalIncludingZeroSpec extends ObjectBehavior
@@ -28,7 +28,7 @@ class NaturalIncludingZeroSpec extends ObjectBehavior
 
     public function it_can_be_built_from_an_integer()
     {
-        $integer = Integer::fromNativeInteger(10);
+        $integer = IntegerObject::fromNativeInteger(10);
         $this->beConstructedThrough('fromInteger', [$integer]);
         $this->toNativeInteger()->shouldReturn(10);
     }

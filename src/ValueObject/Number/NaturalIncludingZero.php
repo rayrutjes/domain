@@ -4,41 +4,40 @@ namespace RayRutjes\Domain\ValueObject\Number;
 
 use RayRutjes\Domain\DomainException\AssertionFailedException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class NaturalIncludingZero extends AbstractValueObject
+class NaturalIncludingZero implements ValueObject
 {
     /**
-     * @var Integer
+     * @var IntegerObject
      */
     private $natural;
 
     /**
-     * @param $nativeInteger
+     * @param int $nativeInteger
      *
      * @return NaturalIncludingZero
      */
     final public static function fromNativeInteger($nativeInteger)
     {
-        $integer = Integer::fromNativeInteger($nativeInteger);
+        $integer = IntegerObject::fromNativeInteger($nativeInteger);
 
         return new static($integer);
     }
 
     /**
-     * @param Integer $integer
+     * @param IntegerObject $integer
      *
      * @return NaturalIncludingZero
      */
-    final public static function fromInteger(Integer $integer)
+    final public static function fromInteger(IntegerObject $integer)
     {
         return new static($integer);
     }
 
     /**
-     * @param Integer $integer
+     * @param IntegerObject $integer
      */
-    final protected function __construct(Integer $integer)
+    final private function __construct(IntegerObject $integer)
     {
         if ($integer->toNativeInteger() < 0) {
             throw new AssertionFailedException('An integer greater or equal to 0 is expected.');
@@ -61,8 +60,11 @@ class NaturalIncludingZero extends AbstractValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-        && $this->toNativeInteger() === $other->toNativeInteger();
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+        return $this->toNativeInteger() === $other->toNativeInteger();
     }
 
     /**

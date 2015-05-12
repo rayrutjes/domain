@@ -4,9 +4,8 @@ namespace RayRutjes\Domain\ValueObject\Number;
 
 use RayRutjes\Domain\DomainException\AssertionFailedException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class Integer extends AbstractValueObject
+class IntegerObject implements ValueObject
 {
     /**
      * @var int
@@ -16,7 +15,7 @@ class Integer extends AbstractValueObject
     /**
      * @param $integer
      *
-     * @return Integer
+     * @return IntegerObject
      */
     final public static function fromNativeInteger($integer)
     {
@@ -50,8 +49,11 @@ class Integer extends AbstractValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-                && $this->toNativeInteger() === $other->toNativeInteger();
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+        return $this->toNativeString() === $other->toNativeString();
     }
 
     /**

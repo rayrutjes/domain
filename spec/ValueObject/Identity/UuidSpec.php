@@ -30,7 +30,7 @@ class UuidSpec extends ObjectBehavior
     public function it_can_be_generated()
     {
         $this->beConstructedThrough('generate', []);
-        $uuid1 = $this->toNativeString();
+        // $uuid1 = $this->toNativeString();
 
         // Todo: find a way of test for uniqueness, found no way yet to achieve it with phpspec, as it is not possible to re-instantiate itself
     }

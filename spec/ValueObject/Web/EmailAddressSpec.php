@@ -4,14 +4,14 @@ namespace spec\RayRutjes\Domain\ValueObject\Web;
 
 use PhpSpec\ObjectBehavior;
 use RayRutjes\Domain\DomainException\AssertionFailedException;
-use RayRutjes\Domain\ValueObject\String\String;
+use RayRutjes\Domain\ValueObject\String\StringObject;
 use RayRutjes\Domain\ValueObject\Web\EmailAddress;
 
 class EmailAddressSpec extends ObjectBehavior
 {
     public function let()
     {
-        $email = String::fromNativeString('g.mansoif@example.com');
+        $email = StringObject::fromNativeString('g.mansoif@example.com');
         $this->beConstructedWith($email);
     }
 
@@ -23,7 +23,7 @@ class EmailAddressSpec extends ObjectBehavior
 
     public function it_should_not_accept_misformatted_email_addresses()
     {
-        $email = String::fromNativeString('g.mansoif[@]example.com');
+        $email = StringObject::fromNativeString('g.mansoif[@]example.com');
         $this->shouldThrow(new AssertionFailedException('Misformatted email address.'))->during('__construct', [$email]);
     }
 

@@ -4,9 +4,8 @@ namespace RayRutjes\Domain\ValueObject\Identity;
 
 use DomainException;
 use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\AbstractValueObject;
 
-class Uuid extends AbstractValueObject
+class Uuid implements ValueObject
 {
     /**
      * @var \Rhumsaa\Uuid\Uuid
@@ -50,8 +49,11 @@ class Uuid extends AbstractValueObject
      */
     final public function sameValueAs(ValueObject $other)
     {
-        return  parent::sameValueAs($other)
-                && $this->uuid->equals($other->uuid);
+        $className = static::class;
+        if (!$other instanceof $className) {
+            return false;
+        }
+        return $this->uuid->equals($other->uuid);
     }
 
     /**
