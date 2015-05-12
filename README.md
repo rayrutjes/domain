@@ -70,7 +70,7 @@ or released as a separate package.
 
 ### Run the tests
 ```
-$ vendor/bin/phpspec
+$ vendor/bin/phpspec run
 ```
 **Note that phpspec will need xdebug extension to be enabled in order to produce the code coverage files.**
 
