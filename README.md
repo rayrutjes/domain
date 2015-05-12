@@ -2,6 +2,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/RayRutjes/domain.svg?style=flat-square)](https://scrutinizer-ci.com/g/RayRutjes/domain)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/RayRutjes/domain.svg?style=flat-square)](https://scrutinizer-ci.com/g/RayRutjes/domain/code-structure)
+[![Code Climate](https://img.shields.io/codeclimate/github/RayRutjes/domain.svg?style=flat-square)](https://codeclimate.com/github/RayRutjes/domain/code)
 
 ## Naming conventions
 
