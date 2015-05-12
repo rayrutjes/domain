@@ -26,7 +26,7 @@ Until we reach that stage, we will allow BC breaks in minor releases, so that we
 Requirements
 ------------
 
-This package is only supported on PHP 5.6 and PHP-HHVM.
+This package is supported on PHP 5.4 and up, but also PHP-HHVM.
 
 Php xdebug extension is required to run phpspec tests.
 
