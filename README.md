@@ -78,6 +78,16 @@ $ vendor/bin/phpspec run
 
 Please check that your code coverage is satisfying by consulting the html files residing in the generated "coverage" folder.
 
-Recommended DDD reading
------------------------
-Todo: Put some references to books, websites, articles and communities.
+Recommended DDD resources
+-------------------------
+
+#### Books
+
+* [Domain-Driven Design: Tackling Complexity in the Heart of Software](http://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) from Eric Evans
+* [Implementing Domain-Driven Design](http://www.amazon.fr/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577) from Vaughn Vernon
+
+#### Concrete Implementations
+
+* [DDD applied to a real Agile Project Management project](https://github.com/VaughnVernon/IDDD_Samples) by Vaughn Vernon,
+
+Todo: Add more references to books, websites, articles and communities as it goes.
