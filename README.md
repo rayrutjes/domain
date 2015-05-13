@@ -85,6 +85,7 @@ Recommended DDD resources
 
 * [Domain-Driven Design: Tackling Complexity in the Heart of Software](http://www.amazon.fr/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215) from Eric Evans
 * [Implementing Domain-Driven Design](http://www.amazon.fr/Implementing-Domain-Driven-Design-Vaughn-Vernon/dp/0321834577) from Vaughn Vernon
+* [Patterns, Principles, and Practices of Domain-Driven Design](http://www.wrox.com/WileyCDA/WroxTitle/Patterns-Principles-and-Practices-of-Domain-Driven-Design.productCd-1118714709.html) from Scott Millett, Nick Tune
 
 #### Concrete Implementations
 
