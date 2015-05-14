@@ -2,8 +2,8 @@
 
 namespace RayRutjes\Domain\ValueObject\Identity;
 
-use DomainException;
-use RayRutjes\Domain\ValueObject;
+use InvalidArgumentException;
+use RayRutjes\Domain\ValueObject\ValueObject;
 
 class Uuid implements ValueObject
 {
@@ -13,33 +13,26 @@ class Uuid implements ValueObject
     private $uuid;
 
     /**
-     * @param string $uuid
-     *
-     * @return Uuid
-     */
-    final public static function fromNativeString($uuid)
-    {
-        if (!\Rhumsaa\Uuid\Uuid::isValid($uuid)) {
-            throw new DomainException('Invalid Uuid format');
-        }
-
-        return new static(\Rhumsaa\Uuid\Uuid::fromString($uuid));
-    }
-
-    /**
      * @return Uuid
      */
     final public static function generate()
     {
-        return new static(\Rhumsaa\Uuid\Uuid::uuid4());
+        return new static(\Rhumsaa\Uuid\Uuid::uuid4()->toString());
     }
 
     /**
-     * @param \Rhumsaa\Uuid\Uuid $uuid
+     * @param string
      */
-    final public function __construct(\Rhumsaa\Uuid\Uuid $uuid)
+    final public function __construct($uuid)
     {
-        $this->uuid = $uuid;
+        if (!is_string($uuid)) {
+            throw new InvalidArgumentException('Uuid expected a string.');
+        }
+        if (!\Rhumsaa\Uuid\Uuid::isValid($uuid)) {
+            throw new InvalidArgumentException('Invalid Uuid format.');
+        }
+
+        $this->uuid = \Rhumsaa\Uuid\Uuid::fromString($uuid);
     }
 
     /**
@@ -53,13 +46,13 @@ class Uuid implements ValueObject
             return false;
         }
 
-        return $this->uuid->equals($other->uuid);
+        return $this->toString() === $other->toString();
     }
 
     /**
      * @return string
      */
-    final public function toNativeString()
+    final public function toString()
     {
         return $this->uuid->toString();
     }
@@ -69,6 +62,6 @@ class Uuid implements ValueObject
      */
     final public function __toString()
     {
-        return $this->toNativeString();
+        return $this->toString();
     }
 }

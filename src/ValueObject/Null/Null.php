@@ -2,9 +2,9 @@
 
 namespace RayRutjes\Domain\ValueObject\Null;
 
-use RayRutjes\Domain\ValueObject;
+use RayRutjes\Domain\ValueObject\ValueObject;
 
-final class NullObject implements ValueObject
+final class Null implements ValueObject
 {
     public function __construct()
     {
@@ -23,9 +23,9 @@ final class NullObject implements ValueObject
     /**
      * @return string
      */
-    public function toNativeString()
+    public function toString()
     {
-        return strval(null);
+        return '';
     }
 
     /**
@@ -33,6 +33,6 @@ final class NullObject implements ValueObject
      */
     public function __toString()
     {
-        return $this->toNativeString();
+        return $this->toString();
     }
 }

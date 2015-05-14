@@ -2,8 +2,6 @@
 
 namespace RayRutjes\Domain\Specification;
 
-use RayRutjes\Domain\Specification;
-
 class AndSpecification extends AbstractSpecification implements Specification
 {
     /**

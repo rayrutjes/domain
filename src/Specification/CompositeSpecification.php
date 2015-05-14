@@ -2,8 +2,6 @@
 
 namespace RayRutjes\Domain\Specification;
 
-use RayRutjes\Domain\Specification;
-
 /**
  * Works like AndSpecification, only here you can pass an unlimited amount of
  * Specifications in the constructor.

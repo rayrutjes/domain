@@ -3,7 +3,7 @@
 namespace spec\RayRutjes\Domain\Specification;
 
 use PhpSpec\ObjectBehavior;
-use RayRutjes\Domain\Specification;
+use RayRutjes\Domain\Specification\Specification;
 use stdClass;
 
 class OrSpecificationSpec extends ObjectBehavior
