@@ -3,7 +3,7 @@
 namespace spec\RayRutjes\Domain\Stub\Specification;
 
 use PhpSpec\ObjectBehavior;
-use RayRutjes\Domain\Specification;
+use RayRutjes\Domain\Specification\Specification;
 use stdClass;
 
 class SpecificationStubSpec extends ObjectBehavior
@@ -11,7 +11,7 @@ class SpecificationStubSpec extends ObjectBehavior
     public function it_is_initializable()
     {
         $this->shouldHaveType('RayRutjes\Domain\Stub\Specification\SpecificationStub');
-        $this->shouldHaveType('RayRutjes\Domain\Specification');
+        $this->shouldHaveType('RayRutjes\Domain\Specification\Specification');
     }
 
     public function it_can_be_chained_with_an_and_specification(Specification $specification)

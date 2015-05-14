@@ -1,10 +1,6 @@
 <?php
 
-namespace RayRutjes\Domain;
-
-use RayRutjes\Domain\Specification\AndSpecification;
-use RayRutjes\Domain\Specification\NotSpecification;
-use RayRutjes\Domain\Specification\OrSpecification;
+namespace RayRutjes\Domain\Specification;
 
 interface Specification
 {

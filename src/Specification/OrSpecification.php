@@ -2,8 +2,6 @@
 
 namespace RayRutjes\Domain\Specification;
 
-use RayRutjes\Domain\Specification;
-
 class OrSpecification extends AbstractSpecification implements Specification
 {
     /**

@@ -90,4 +90,7 @@ Recommended DDD resources
 
 * [DDD applied to a real Agile Project Management project](https://github.com/VaughnVernon/IDDD_Samples) by Vaughn Vernon,
 
+#### Other
+* [Value Objects] https://github.com/tonypiper/php-value-objects/blob/master/README.md
+
 Todo: Add more references to books, websites, articles and communities as it goes.

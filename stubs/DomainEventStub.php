@@ -1,8 +1,8 @@
 <?php
 
-namespace RayRutjes\Domain\Stub\DomainEvent;
+namespace RayRutjes\Domain\Stub;
 
-use RayRutjes\Domain\DomainEvent\AbstractDomainEvent;
+use RayRutjes\Domain\AbstractDomainEvent;
 
 class DomainEventStub extends AbstractDomainEvent
 {

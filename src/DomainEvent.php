@@ -5,7 +5,7 @@ namespace RayRutjes\Domain;
 interface DomainEvent
 {
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function name();
+    public function occurredOn();
 }

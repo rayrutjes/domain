@@ -1,6 +1,6 @@
 <?php
 
-namespace RayRutjes\Domain\Stub\Identifier;
+namespace RayRutjes\Domain\Stub;
 
 use RayRutjes\Domain\Identifier;
 use RayRutjes\Domain\ValueObject\Identity\Uuid;

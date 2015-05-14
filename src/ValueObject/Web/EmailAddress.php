@@ -2,56 +2,27 @@
 
 namespace RayRutjes\Domain\ValueObject\Web;
 
-use RayRutjes\Domain\DomainException\AssertionFailedException;
-use RayRutjes\Domain\ValueObject;
-use RayRutjes\Domain\ValueObject\String\StringObject;
+use InvalidArgumentException;
+use RayRutjes\Domain\ValueObject\ValueObject;
 
 class EmailAddress implements ValueObject
 {
     /**
-     * @var StringObject
+     * @var string
      */
-    private $email;
+    private $address;
 
     /**
-     * @param string $nativeString
-     *
-     * @return EmailAddress
+     * @param string $address
      */
-    final public static function fromNativeString($nativeString)
+    final public function __construct($address)
     {
-        $string = StringObject::fromNativeString($nativeString);
-
-        return self::fromString($string);
-    }
-
-    /**
-     * @param StringObject $string
-     *
-     * @return EmailAddress
-     */
-    final public static function fromString(StringObject $string)
-    {
-        return new static($string);
-    }
-
-    /**
-     * @param StringObject $string
-     */
-    final public function __construct(StringObject $string)
-    {
-        if (!filter_var($string->toNativeString(), FILTER_VALIDATE_EMAIL)) {
-            throw new AssertionFailedException('Misformatted email address.');
+        $specification = new EmailAddressSpecification();
+        if (!$specification->isSatisfiedBy($address)) {
+            throw new InvalidArgumentException('EmailAddress expects a well formatted email address.');
         }
-        $this->email = $string;
-    }
 
-    /**
-     * @return string
-     */
-    final public function toNativeString()
-    {
-        return $this->email->toNativeString();
+        $this->address = $address;
     }
 
     /**
@@ -65,7 +36,15 @@ class EmailAddress implements ValueObject
             return false;
         }
 
-        return $this->toNativeString() === $other->toNativeString();
+        return $this->toString() === $other->toString();
+    }
+
+    /**
+     * @return string
+     */
+    final public function toString()
+    {
+        return $this->address;
     }
 
     /**
@@ -73,6 +52,6 @@ class EmailAddress implements ValueObject
      */
     final public function __toString()
     {
-        return $this->toNativeString();
+        return $this->toString();
     }
 }

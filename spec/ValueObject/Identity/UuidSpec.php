@@ -2,53 +2,49 @@
 
 namespace spec\RayRutjes\Domain\ValueObject\Identity;
 
-use DomainException;
+use InvalidArgumentException;
 use PhpSpec\ObjectBehavior;
-use RayRutjes\Domain\ValueObject;
+use RayRutjes\Domain\ValueObject\ValueObject;
 use Rhumsaa\Uuid\Uuid;
 
 class UuidSpec extends ObjectBehavior
 {
     public function let()
     {
-        $uuid = Uuid::fromString(Uuid::NIL);
-        $this->beConstructedWith($uuid);
+        $this->beConstructedWith(Uuid::NIL);
     }
 
     public function it_is_initializable()
     {
         $this->shouldHaveType('RayRutjes\Domain\ValueObject\Identity\Uuid');
-        $this->shouldHaveType('RayRutjes\Domain\ValueObject');
+        $this->shouldHaveType('RayRutjes\Domain\ValueObject\ValueObject');
     }
 
-    public function it_can_be_built_from_a_native_string()
+    public function it_should_not_accept_an_invalid_uuid()
     {
-        $this->beConstructedThrough('fromNativeString', [Uuid::NIL]);
-
-        $this->shouldThrow(new DomainException('Invalid Uuid format'))->during('fromNativeString', ['not a valid uuid string']);
+        $this->shouldThrow(new InvalidArgumentException('Uuid expected a string.'))->during('__construct', [null]);
+        $this->shouldThrow(new InvalidArgumentException('Invalid Uuid format.'))->during('__construct', ['not a valid uuid string']);
     }
 
     public function it_can_be_generated()
     {
         $this->beConstructedThrough('generate', []);
-        // $uuid1 = $this->toNativeString();
-
-        // Todo: find a way of test for uniqueness, found no way yet to achieve it with phpspec, as it is not possible to re-instantiate itself
     }
+
     public function it_can_be_compared_with_another_uuid(ValueObject $valueObject)
     {
-        $nilUuid = \RayRutjes\Domain\ValueObject\Identity\Uuid::fromNativeString(Uuid::NIL);
+        $this->sameValueAs($valueObject)->shouldReturn(false);
+
+        $nilUuid = new \RayRutjes\Domain\ValueObject\Identity\Uuid(Uuid::NIL);
         $this->sameValueAs($nilUuid)->shouldReturn(true);
 
         $randomUuid = \RayRutjes\Domain\ValueObject\Identity\Uuid::generate();
         $this->sameValueAs($randomUuid)->shouldReturn(false);
-
-        $this->sameValueAs($valueObject)->shouldReturn(false);
     }
 
-    public function it_can_be_translated_to_a_native_string()
+    public function it_can_be_translated_to_a_string()
     {
-        $this->toNativeString()->shouldReturn(Uuid::NIL);
+        $this->toString()->shouldReturn(Uuid::NIL);
         $this->__toString()->shouldReturn(Uuid::NIL);
     }
 }
